@@ -1,0 +1,199 @@
+<html>
+	<head>
+		<title>IV Calc</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=1.0" />
+		<style type="text/css">
+			body{
+			  -webkit-text-size-adjust:none;
+			  font-family:Helvetica, Arial, Verdana, sans-serif;
+			  padding:5px;
+			}
+			#calculator { margin:0 auto; width:480px; }
+			
+		</style>
+		<script type="text/javascript" src="Legendary.js"></script>
+		
+	</head>
+    <body>
+        <form id="form" name="form">
+		    <div id="calculator">
+			    <div class="species">
+				    <label for="species">Pokemon:</label>
+				    <input type="text" value="" id="name" name="name" autocorrect="off" />
+			        <select id="species">
+			        </select>
+                    <input type="text" id="number" name="number" maxlength="3" size="3" value="0" />
+			    </div>
+			    <div class="nature">
+				    <label for="nat">Nature:</label>
+				    <select id="nat">
+					    <option value="-1"> </option>
+					    <option value="14">Adamant</option>
+					    <option value="1">Bashful</option>
+					    <option value="6">Bold</option>
+					    <option value="22">Brave</option>
+					    <option value="8">Calm</option>
+					    <option value="16">Careful</option>
+					    <option value="2">Docile</option>
+					    <option value="12">Gentle</option>
+					    <option value="3">Hardy</option>
+					    <option value="13">Hasty</option>
+					    <option value="15">Impish</option>
+					    <option value="17">Jolly</option>
+					    <option value="19">Lax</option>
+					    <option value="10">Lonely</option>
+					    <option value="11">Mild</option>
+					    <option value="7">Modest</option>
+					    <option value="21">Naive</option>
+					    <option value="18">Naughty</option>
+					    <option value="24">Quiet</option>
+					    <option value="5">Quirky</option>
+					    <option value="20">Rash</option>
+					    <option value="23">Relaxed</option>
+					    <option value="25">Sassy</option>
+					    <option value="4">Serious</option>
+					    <option value="9">Timid</option>	
+				    </select>
+			    </div>
+			    <div class="characteristic">
+				    <label for="char">Characteristic:</label>
+				    <select id="char" name="char">
+					    <option value="-1"> </option>
+					    <option value="1.2">A little quick-tempered</option>
+					    <option value="5.1">Alert to sounds</option>
+					    <option value="2.1">Capable of taking hits</option>
+					    <option value="2.3">Good endurance</option>
+					    <option value="2.4">Good perseverence</option>
+					    <option value="4.3">Hates to lose</option>
+					    <option value="3.0">Highly curious</option>
+					    <option value="2.2">Highly persistent</option>
+					    <option value="5.2">Impetuous and silly</option>
+					    <option value="1.3">Likes to fight</option>
+					    <option value="0.4">Likes to relax</option>
+					    <option value="5.0">Likes to run</option>
+					    <option value="1.1">Likes to thrash about</option>
+					    <option value="0.0">Loves to eat</option>
+					    <option value="3.1">Mischievous</option>
+					    <option value="0.1">Often dozes off</option>
+					    <option value="3.3">Often lost in thought</option>
+					    <option value="0.2">Often scatters things</option>
+					    <option value="1.0">Proud of its power</option>
+					    <option value="1.4">Quick tempered</option>
+					    <option value="5.4">Quick to flee</option>
+					    <option value="0.3">Scatters things often</option>
+					    <option value="5.3">Somewhat of a clown</option>
+					    <option value="4.4">Somewhat stubborn</option>
+					    <option value="4.1">Somewhat vain</option>
+					    <option value="4.0">Strong willed</option>
+					    <option value="4.2">Strongly defiant</option>
+					    <option value="2.0">Sturdy body</option>
+					    <option value="3.2">Thoroughly cunning</option>
+					    <option value="3.4">Very finicky</option>
+				    </select>
+			    </div>
+			    <div class="stats">
+				    <label for="level">Level:</label><input type="text" id="level" value="50" pattern="[0-9]*" /></input>
+				    <table>
+					    <thead>
+						    <tr>
+							    <th colspan="2">Stat</th>
+							    <th>EV</th>
+						    </tr>
+					    </thead>
+					    <tbody>
+						    <tr class="hp">
+							    <th>HP</th>
+							    <td><input type="text" id="hp" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							    <td><input type="text" id="hp_ev" value="" pattern="[0-9]*" maxlength="3"  /></td>
+						    </tr>
+						    <tr class="atk">
+							    <th>Atk</th>
+							    <td><input type="text" id="atk" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							    <td><input type="text" id="atk_ev" value="" pattern="[0-9]*" maxlength="3"  /></td>
+						    </tr>
+						    <tr class="def">
+							    <th>Def</th>
+							    <td><input type="text" id="def" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							    <td><input type="text" id="def_ev" value="" pattern="[0-9]*" maxlength="3"  /></td>
+						    </tr>
+						    <tr class="spa">
+							    <th>SpA</th>
+							    <td><input type="text" id="spa" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							    <td><input type="text" id="spa_ev" value="" pattern="[0-9]*" maxlength="3"  /></td>
+						    </tr>
+						    <tr class="spd">
+							    <th>SpD</th>
+							    <td><input type="text" id="spd" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							    <td><input type="text" id="spd_ev" value="" pattern="[0-9]*" maxlength="3"  /></td>
+						    </tr>
+						    <tr class="spe">
+							    <th>Spe</th>
+							    <td><input type="text" id="spe" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							    <td><input type="text" id="spe_ev" value="" pattern="[0-9]*" maxlength="3"  /></td>
+						    </tr>
+					    </tbody>
+				    </table>
+			    </div>
+			    <div id="controls">
+				    <h2>Individual Values</h2>
+				    <table>
+					    <thead>
+						    <tr>
+							    <th>Stat</th>
+							    <th>IV</th>
+						    </tr>
+					    </thead>
+					    <tbody>
+						    <tr class="hp">
+							    <th>HP</th>
+							    <td><input type="text" id="hp_iv" value="" pattern="[0-9]*" /></td>
+						    </tr>
+						    <tr class="atk">
+							    <th>Atk</th>
+							    <td><input type="text" id="atk_iv" value="" pattern="[0-9]*"  /></td>
+						    </tr>
+						    <tr class="def">
+							    <th>Def</th>
+							    <td><input type="text" id="def_iv" value="" pattern="[0-9]*"  /></td>
+						    </tr>
+						    <tr class="spa">
+							    <th>SpA</th>
+							    <td><input type="text" id="spa_iv" value="" pattern="[0-9]*"  /></td>
+						    </tr>
+						    <tr class="spd">
+							    <th>SpD</th>
+							    <td><input type="text" id="spd_iv" value="" pattern="[0-9]*"  /></td>
+						    </tr>
+						    <tr class="spe">
+							    <th>Spe</th>
+							    <td><input type="text" id="spe_iv" value="" pattern="[0-9]*"  /></td>
+						    </tr>
+					    </tbody>
+				    </table>				
+			    </div>
+		    </div>
+        
+            <script type="text/javascript">
+                function iv_onload() {
+                    initO();
+                }
+                // overwrite methods that we don't care about
+                function display_eps() {}
+                function display_effectiveness(){}
+                function row_edit(){}
+
+                iv_onload();
+            </script>
+            <div id="hiddenButNecessary" style="display:none">
+                <div id="types"></div>
+                <div id="eggs"></div>
+                <div id="base0"></div>
+                <div id="base1"></div>
+                <div id="base2"></div>
+                <div id="base3"></div>
+                <div id="base4"></div>
+                <div id="base5"></div>
+            </div>
+        </form>
+	</body>
+</html>
