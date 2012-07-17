@@ -1,4 +1,4 @@
-body{  -webkit-text-size-adjust:none;font-family:Helvetica, Arial, Verdana, sans-serif; padding:5px;}
+body{  -webkit-text-size-adjust:none;font-family:Helvetica, Arial, Verdana, sans-serif; padding:2px;}
 #calculator { margin:0 auto; width:320px; overflow:hidden;}
 .ep { display: none;}
 .hide { display: none;}
@@ -11,7 +11,7 @@ body{  -webkit-text-size-adjust:none;font-family:Helvetica, Arial, Verdana, sans
 #level-0 { width:25px; }
 
 #about { font-size:0.8em; }
-h1 { font-size:1.1em;}
+h1 { font-size:1.1em; margin:0.2em 0;}
 h2 { font-size:1.0em; }
 h3 { font-size:0.9em; }
 
