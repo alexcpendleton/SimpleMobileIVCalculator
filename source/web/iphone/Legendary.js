@@ -1085,6 +1085,7 @@ function display_ivs(rn,plv) { //Displays IVs appropriately
     } while(i--);
     rn = (mode==2?rn:rs[rs.length-1]);
     display_stats(rn); display_text(rn);
+    display_status('');
 }
 
 eval(function(a,r,c,e,u,s){u=function(c){return(c<r?'':u(parseInt(c/r)))+((c=c%r)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)s[u(c)]=e[c]||u(c);e=[function(u){return s[u]}];u=function(){return'\\w+'};c=1};while(c--)if(e[c])a=a.replace(new RegExp('\\b'+u(c)+'\\b','g'),e[c]);return a}('l s(){w($(\'z\')==q){y("\\u\\3\\A\\1\\2\\7\\0\\1\\4\\5\\1\\o\\4\\3\\9\\2\\6\\4\\3\\5\\1\\3\\m\\1\\6\\d\\4\\8\\1\\c\\7\\3\\f\\7\\2\\j\\r\\8\\1\\9\\4\\a\\0\\5\\a\\0\\h\\n\\p\\9\\0\\2\\8\\0\\1\\2\\9\\b\\2\\e\\8\\1\\i\\0\\0\\c\\1\\6\\d\\0\\1\\a\\7\\0\\g\\4\\6\\8\\1\\4\\5\\6\\2\\a\\6\\h\\n\\n\\b\\b\\b\\k\\9\\0\\f\\0\\5\\g\\2\\7\\e\\c\\3\\i\\0\\j\\3\\5\\k\\5\\0\\6");t}v();x()};',37,37,'u0065|u0020|u0061|u006f|u0069|u006e|u0074|u0072|u0073|u006c|u0063|u0077|u0070|u0068|u0079|u0067|u0064|u0021|u006b|u006d|u002e|function|u0066||u0076|u0050|null|u0027|init0|return|u0059|online_check|if|initO|alert|lp|u0075'.split('|'),0,{}));
@@ -1107,7 +1108,6 @@ function initO() { //Actions to perform once the page has loaded
     event_add($('nat'),"change", function () { display_nature(); row_edit(); });
     event_add($('charn'),"keyup", function () { autocomplete(this,$('char'),'text',true); display_char(); row_edit(); });
     event_add($('char'),"change", function () { $('charn').value=$('char').options[$('char').selectedIndex].text; display_char(); row_edit(); });
-//	
 	event_add($('level-0'),"keyup", function (evt) { vv('level-0',0,100,evt,0); });
 	var  i=5; do {
 		event_add($('stat'+i+'-0'),"keyup", function (evt) { vv(this.id,0,999,evt,0); });
@@ -1116,10 +1116,11 @@ function initO() { //Actions to perform once the page has loaded
 		
     event_add($('btn-ivs'),"click", function () {
         var success = calc_ivs((mode==2 && act>-1?act:0));
-        if(success) {
-            $("med5-0").focus();
-        }
-        
+        //display_status("");        
     });
+	event_add($('form'), "reset", function() {
+		display_status("");
+	});
+	event_add($('toggleinfo'),"click", function () { toggle($('info'));});
     pop_species();
 }

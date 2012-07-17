@@ -1,0 +1,22 @@
+body{  -webkit-text-size-adjust:none;font-family:Helvetica, Arial, Verdana, sans-serif; padding:5px;}
+#calculator { margin:0 auto; width:320px; overflow:hidden;}
+.ep { display: none;}
+.hide { display: none;}
+.stats input { width:35px }
+#name { width:70px;}
+#species { width:120px; }
+#number { width:35px; }
+#charn { width:80px;}
+#controls { text-align:center; }
+#level-0 { width:25px; }
+
+#about { font-size:0.8em; }
+h1 { font-size:1.1em;}
+h2 { font-size:1.0em; }
+h3 { font-size:0.9em; }
+
+.ivs h4 { margin:0.8em 0;}
+
+#status { margin:4px; font-size:0.9em;}
+
+#toggleinfo { cursor:pointer; }

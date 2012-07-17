@@ -1,30 +1,14 @@
 <html>
 	<head>
-		<title>IV Calc</title>
+		<title>Pendletron IV Calc</title>
 		<meta name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=1.0" />
-		<style type="text/css">
-			body{
-			  -webkit-text-size-adjust:none;
-			  font-family:Helvetica, Arial, Verdana, sans-serif;
-			  padding:5px;
-			}
-			#calculator { margin:0 auto; width:320px; overflow:hidden;}
-			.ep { display: none;}
-			.hide { display: none;}
-			.stats input { width:35px }
-			#name { width:70px;}
-			#species { width:120px; }
-			#number { width:35px; }
-			#charn { width:80px;}
-			#controls { text-align:center; }
-			#level-0 { width:25px; }
-		</style>
-		<script type="text/javascript" src="Legendary.js"></script>
-		
+		<link href="iphone.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="Legendary.js"></script>		
 	</head>
     <body>
         <form id="form" name="form">
 		    <div id="calculator">
+				<h1>Pendletron Simple IV Calc</h1>
 			    <div class="species">
 				    <label for="species">Pkmn</label>
 				    <input type="text" value="" id="name" name="name" autocorrect="off" />
@@ -103,8 +87,7 @@
 					    <option value="3.4">Very finicky</option>
 				    </select>
 			    </div>
-			    <div>
-				    
+			    <div class="baseStats">
 				    <table class="stats">
 					    <thead>
 						    <tr>
@@ -140,9 +123,10 @@
 		        </div>
 		        <div id="controls">
 		            <input type="button" id="btn-ivs" name="btn-ivs" value="Calculate IVs" />
+					<input type="reset" id="btn-reset" name="btn-reset" value="Reset" />
 		        </div>
-		        <div id="">
-		            <h3>Individual Values</h3>
+		        <div class="ivs">
+		            <h4>Individual Values</h4>
 		            <table class="stats">
 					    <thead>
 						    <tr>
@@ -166,99 +150,135 @@
 		                </tbody>
 		            </table>				
 		        </div>
-		    </div>        
-            <div id="hiddenButNecessary" class="hide">
-                <div id="types"></div>
-                <div id="eggs"></div>
-                <div id="base0"></div>
-                <div id="base1"></div>
-                <div id="base2"></div>
-                <div id="base3"></div>
-                <div id="base4"></div>
-                <div id="base5"></div>
-        
-                <div id="types"></div>
-                <div id="eggs"></div>
+				<hr />
+				<div id="about">
+					<h2 id="toggleinfo">Program information &#177;</h2>
+					<div id="info">
+						<h3>How to download this calculator</h3>
+						<p id="download">While in your browser window, go to <strong>File &gt; Save As...</strong> and save this page to your computer. Make sure to select <strong>HTML only</strong> when saving. You can then use it offline whenever you want.</p>
+						
+						<h3>Compatible with:</h3>
+						<p> Pokémon Ruby, Sapphire, Emerald, FireRed, LeafGreen, Diamond, Pearl, Platinum, HeartGold, SoulSilver, Black, White for the <strong>Nintendo DS</strong> and Pokémon Colosseum, XD, Battle Revolution for the <strong>Nintendo Wii</strong>.</p>
+						
+						<h3>About</h3>
+						<p>This IV Calculator / Stat Calculator / Hidden Power Calculator has been written by Hercules G. Papatheodorou a.k.a Arty2, webmaster of <a href="http://www.legendarypokemon.net" id="lp">Legendary Pokémon</a>. It allows the calculation of any Pokémon's  Individual Values when given the Pokémon's details.</p>
+						<p>It's written in <strong>JavaScript</strong> to ensure cross-system compatibility. It is a small single file download and requires nothing but a browser with JavaScript enabled. It <em>should</em> work flawlessly in Internet Explorer, Opera, Firefox, Chrome and Safari on any system, including the Nintendo DSi.</p>
+						<p>It has been modified and hosted by <a href="http://www.pendletron.com/">Alex Pendleton</a> to be more mobile-friendly.</p>
+						<p>If you want to translate, modify this program or include it in your website, please read the License provided below.</p>
 
-                <input style="text-align: right;" disabled="disabled" type="text" id="Text1" name="number-0" maxlength="3" size="3" value="0">
-                <input type="hidden" id="nat-0" name="nat-0" value="-1">
-                <input type="hidden" id="char-0" name="char-0" value="-1">
-                <input type="hidden" id="hpt-0" name="hpt-0" value="-1">
-                
-                <input type="hidden" id="pot0-0" name="pot0-0" value="-1">
-                <input type="hidden" id="pot1-0" name="pot1-0" value="">
-                <input type="hidden" id="pot2-0" name="pot2-0" value="-1">
-                
-                
-                <select name="hpt" id="hpt"><option value="-1" selected="selected"></option></select>
-                
-                <select name="pot0" id="pot0">
-	                <option value="-1"> </option>
-	                <option value="0">Decent [0-90]</option>
-	                <option value="1">Above average [91-120]</option>
-	                <option value="2">Relatively superior [121-150]</option>
-	                <option value="3">Outstanding [150-186]</option>
-                </select>
-                <select name="pot1" id="pot1" size="1" multiple="multiple">
-	                <option value="-1"> </option>
-	                <option value="0">HP</option>
-	                <option value="1">Attack</option>
-	                <option value="2">Defense</option>
-	                <option value="3">Sp. Attack</option>
-	                <option value="4">Sp. Defense</option>
-	                <option value="5">Speed</option>
-                </select>	
-                <select name="pot2" id="pot2">
-                    <option value="-1"> </option>
-                    <option value="0">Rather decent</option>
-                    <option value="1">Very good</option>
-                    <option value="2">Fantastic</option>
-                    <option value="3">Can't be better</option>
-                </select>
-                <input type="checkbox" id="med1"/>
-                
-                <td class="secondary">
-                <table id="mode0">
-                    <tr><td colspan="8"><h2>Individual Values</h2></td></tr>
-                    <tr><td colspan="2"></td><td><h3>HP</h3></td><td><h3>Atk</h3></td><td><h3>Def</h3></td><td><h3>Sp.A</h3></td><td><h3>Sp.D</h3></td><td><h3>Spd</h3></td></tr>
-                    <tr><td colspan="2"><h4><input name="medl" id="medl" class="ext tooltip" type="checkbox" title="Lock Median IVs."/> Median:</h4></td>
-                        <td><input type="text" name="med0-0" id="Text2" maxlength="2" size="2"/></td>
-                        <td><input type="text" name="med1-0" id="Text3" maxlength="2" size="2"/></td>
-                        <td><input type="text" name="med2-0" id="Text4" maxlength="2" size="2"/></td>
-                        <td><input type="text" name="med3-0" id="Text5" maxlength="2" size="2"/></td>
-                        <td><input type="text" name="med4-0" id="Text6" maxlength="2" size="2"/></td>
-                        <td><input type="text" name="med5-0" id="Text7" maxlength="2" size="2"/></td></tr>
-                    <tr class="tooltip" title="Next helpful Level or exact EPs for exact IV (same Level)." class="top"><td colspan="2"><h4>+ Lv.:</h4><h4 class="eps">+ EPs:</h4></td>
-                        <td id="plv0-0"></td>
-                        <td id="plv1-0"></td>
-                        <td id="plv2-0"></td>
-                        <td id="plv3-0"></td>
-                        <td id="plv4-0"></td>
-                        <td id="plv5-0"></td></tr>
-                    <tr><td colspan="2" class="top"><h4>Spread:</h4></td>
-                        <td id="spr0-0" class="right"></td>
-                        <td id="spr1-0" class="right"></td>
-                        <td id="spr2-0" class="right"></td>
-                        <td id="spr3-0" class="right"></td>
-                        <td id="spr4-0" class="right"></td>
-                        <td id="spr5-0" class="right"></td></tr>
-                </table>
-                <input type="radio" class="radio tooltip" name="act" id="act-0" value="0" checked="checked" title="" alt="">
-				<input type="text" id="number-0" value="" pattern="[0-9]*" maxlength="4" readonly="readonly"  />
-            </div>
+						<h2>License</h2>
+						<p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons License</a> and modification of this program's credits is <strong>prohibited</strong>.</p>
+						<dl>
+							<dt>You are free:</dt>
+							<dd><strong>to Share</strong> — to copy, distribute and transmit the work</dd>
+							<dd><strong>to Remix</strong> — to adapt the work</dd>
+							<dt>Under the following conditions:</dt>
+							<dd><strong>Attribution</strong> — You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).</dd>
+							<dd><strong>Noncommercial</strong> — You may not use this work for commercial purposes.</dd>
+							<dd><strong>Share Alike</strong> — If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.</dd>
+						</dl>
+						
+						<p>Kudos to <a href="http://www.legendarypokemon.net/">Hercules G. Papatheodorou a.k.a Arty2</a> for writing pretty much everything.</p>
+						<p>Kudos to <a href="http://www.dustindiaz.com/">Dustin Diaz</a> for some of his amazing functions.</p>
+						<p>The program's author would be glad if notified about your modifications, including translations.</p>
+						
+						<h2>Disclaimer</h2>
+						<p>Pokémon and related characters are &copy; Nintendo, Creatures, Gamefreak and Pokémon Inc. This unofficial, fan-made program is not endorsed by any of the above companies.</p>
+					</div>
+				</div>
+				<div id="hiddenButNecessary" class="hide">
+					<div id="types"></div>
+					<div id="eggs"></div>
+					<div id="base0"></div>
+					<div id="base1"></div>
+					<div id="base2"></div>
+					<div id="base3"></div>
+					<div id="base4"></div>
+					<div id="base5"></div>
 			
-            <script type="text/javascript">
-                function iv_onload() {
-                    initO();
-                }
-                
-                function display_nature() {}
-                function display_effectiveness() {}
-                function display_eps() {}
-				function display_char(){}			
+					<div id="types"></div>
+					<div id="eggs"></div>
 
-                iv_onload();
-            </script>
+					<input style="text-align: right;" disabled="disabled" type="text" id="Text1" name="number-0" maxlength="3" size="3" value="0">
+					<input type="hidden" id="nat-0" name="nat-0" value="-1">
+					<input type="hidden" id="char-0" name="char-0" value="-1">
+					<input type="hidden" id="hpt-0" name="hpt-0" value="-1">
+					
+					<input type="hidden" id="pot0-0" name="pot0-0" value="-1">
+					<input type="hidden" id="pot1-0" name="pot1-0" value="">
+					<input type="hidden" id="pot2-0" name="pot2-0" value="-1">
+					
+					
+					<select name="hpt" id="hpt"><option value="-1" selected="selected"></option></select>
+					
+					<select name="pot0" id="pot0">
+						<option value="-1"> </option>
+						<option value="0">Decent [0-90]</option>
+						<option value="1">Above average [91-120]</option>
+						<option value="2">Relatively superior [121-150]</option>
+						<option value="3">Outstanding [150-186]</option>
+					</select>
+					<select name="pot1" id="pot1" size="1" multiple="multiple">
+						<option value="-1"> </option>
+						<option value="0">HP</option>
+						<option value="1">Attack</option>
+						<option value="2">Defense</option>
+						<option value="3">Sp. Attack</option>
+						<option value="4">Sp. Defense</option>
+						<option value="5">Speed</option>
+					</select>	
+					<select name="pot2" id="pot2">
+						<option value="-1"> </option>
+						<option value="0">Rather decent</option>
+						<option value="1">Very good</option>
+						<option value="2">Fantastic</option>
+						<option value="3">Can't be better</option>
+					</select>
+					<input type="checkbox" id="med1"/>
+					
+					<td class="secondary">
+					<table id="mode0">
+						<tr><td colspan="8"><h2>Individual Values</h2></td></tr>
+						<tr><td colspan="2"></td><td><h3>HP</h3></td><td><h3>Atk</h3></td><td><h3>Def</h3></td><td><h3>Sp.A</h3></td><td><h3>Sp.D</h3></td><td><h3>Spd</h3></td></tr>
+						<tr><td colspan="2"><h4><input name="medl" id="medl" class="ext tooltip" type="checkbox" title="Lock Median IVs."/> Median:</h4></td>
+							<td><input type="text" name="med0-0" id="Text2" maxlength="2" size="2"/></td>
+							<td><input type="text" name="med1-0" id="Text3" maxlength="2" size="2"/></td>
+							<td><input type="text" name="med2-0" id="Text4" maxlength="2" size="2"/></td>
+							<td><input type="text" name="med3-0" id="Text5" maxlength="2" size="2"/></td>
+							<td><input type="text" name="med4-0" id="Text6" maxlength="2" size="2"/></td>
+							<td><input type="text" name="med5-0" id="Text7" maxlength="2" size="2"/></td></tr>
+						<tr class="tooltip" title="Next helpful Level or exact EPs for exact IV (same Level)." class="top"><td colspan="2"><h4>+ Lv.:</h4><h4 class="eps">+ EPs:</h4></td>
+							<td id="plv0-0"></td>
+							<td id="plv1-0"></td>
+							<td id="plv2-0"></td>
+							<td id="plv3-0"></td>
+							<td id="plv4-0"></td>
+							<td id="plv5-0"></td></tr>
+						<tr><td colspan="2" class="top"><h4>Spread:</h4></td>
+							<td id="spr0-0" class="right"></td>
+							<td id="spr1-0" class="right"></td>
+							<td id="spr2-0" class="right"></td>
+							<td id="spr3-0" class="right"></td>
+							<td id="spr4-0" class="right"></td>
+							<td id="spr5-0" class="right"></td></tr>
+					</table>
+					<input type="radio" class="radio tooltip" name="act" id="act-0" value="0" checked="checked" title="" alt="">
+					<input type="text" id="number-0" value="" pattern="[0-9]*" maxlength="4" readonly="readonly"  />
+				</div>
+				
+				<script type="text/javascript">
+					function iv_onload() {
+						initO();
+					}
+					
+					function display_nature() {}
+					function display_effectiveness() {}
+					function display_eps() {}
+					function display_char(){}			
+
+					iv_onload();
+				</script>		
+		    </div>				
         </form>
 	</body>
 </html>
