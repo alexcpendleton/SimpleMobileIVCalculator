@@ -8,9 +8,16 @@
 			  font-family:Helvetica, Arial, Verdana, sans-serif;
 			  padding:5px;
 			}
-			#calculator { margin:0 auto; width:480px; }
+			#calculator { margin:0 auto; width:320px; overflow:hidden;}
 			.ep { display: none;}
 			.hide { display: none;}
+			.stats input { width:35px }
+			#name { width:70px;}
+			#species { width:120px; }
+			#number { width:35px; }
+			#charn { width:80px;}
+			#controls { text-align:center; }
+			#level-0 { width:25px; }
 		</style>
 		<script type="text/javascript" src="Legendary.js"></script>
 		
@@ -19,14 +26,14 @@
         <form id="form" name="form">
 		    <div id="calculator">
 			    <div class="species">
-				    <label for="species">Pokemon:</label>
+				    <label for="species">Pkmn</label>
 				    <input type="text" value="" id="name" name="name" autocorrect="off" />
 			        <select id="species">
 			        </select>
                     <input type="text" id="number" name="number" maxlength="3" size="3" value="0" />
 			    </div>
 			    <div class="nature">
-				    <label for="nat">Nature:</label>
+				    <label for="nat">Nature</label>
 				    <select id="nat">
 					    <option value="-1"> </option>
 					    <option value="14">Adamant</option>
@@ -55,9 +62,12 @@
 					    <option value="4">Serious</option>
 					    <option value="9">Timid</option>	
 				    </select>
+					<span class="level">
+						<label for="level">Lvl </label><input type="text" id="level-0" value="50" pattern="[0-9]*" />
+					</span>
 			    </div>
 			    <div class="characteristic">
-			        <label for="char">Characteristic:</label>
+			        <label for="char">Chr</label>
                     <input type="text" id="charn" name="charn"/>
 				    <select id="char" name="char">
 					    <option value="-1"> </option>
@@ -93,49 +103,34 @@
 					    <option value="3.4">Very finicky</option>
 				    </select>
 			    </div>
-			    <div class="stats">
-				    <label for="level">Level:</label><input type="text" id="level-0" value="50" pattern="[0-9]*" />
-				    <table>
+			    <div>
+				    
+				    <table class="stats">
 					    <thead>
 						    <tr>
-							    <th colspan="2">Stat</th>
-						        <th><span class="ep">EV</span></th>
+								<th>HP</th>
+							    <th>Atk</th>
+							    <th>Def</th>
+							    <th>SpA</th>
+							    <th>SpD</th>
+							    <th>Spe</th>
 						    </tr>
 					    </thead>
 					    <tbody>
-						    <tr class="hp">
-							    <th>HP</th>
+						    <tr class="hp">							    
 							    <td><input type="text" id="stat0-0" value="" pattern="[0-9]*" maxlength="3"  /></td>
-							    <td><input type="text" id="ep0-0" value="" pattern="[0-9]*" maxlength="3" class="ep" /></td>
-						    </tr>
-						    <tr class="atk">
-							    <th>Atk</th>
 							    <td><input type="text" id="stat1-0" value="" pattern="[0-9]*" maxlength="3"  /></td>
-							    <td><input type="text" id="ep1-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
-						    </tr>
-						    <tr class="def">
-							    <th>Def</th>
 							    <td><input type="text" id="stat2-0" value="" pattern="[0-9]*" maxlength="3"  /></td>
-							    <td><input type="text" id="ep2-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
-						    </tr>
-						    <tr class="spa">
-							    <th>SpA</th>
 							    <td><input type="text" id="stat3-0" value="" pattern="[0-9]*" maxlength="3"  /></td>
-							    <td><input type="text" id="ep3-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
-						    </tr>
-						    <tr class="spd">
-							    <th>SpD</th>
 							    <td><input type="text" id="stat4-0" value="" pattern="[0-9]*" maxlength="3"  /></td>
-							    <td><input type="text" id="ep4-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
-						    </tr>
-						    <tr class="spe">
-							    <th>Spe</th>
 							    <td><input type="text" id="stat5-0" value="" pattern="[0-9]*" maxlength="3"  /></td>
+							<tr class="ep">
+							    <td><input type="text" id="ep0-0" value="" pattern="[0-9]*" maxlength="3" class="ep" /></td>
+							    <td><input type="text" id="ep1-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
+							    <td><input type="text" id="ep2-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
+							    <td><input type="text" id="ep3-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
+							    <td><input type="text" id="ep4-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
 							    <td><input type="text" id="ep5-0" value="" pattern="[0-9]*" maxlength="3" class="ep"  /></td>
-						    </tr>
-						    <tr class="dex hide">
-							    <th>Dex</th>
-							    <td><input type="text" id="number-0" value="" pattern="[0-9]*" maxlength="4" readonly="readonly"  /></td>
 						    </tr>
 					    </tbody>
 				    </table>
@@ -147,55 +142,31 @@
 		            <input type="button" id="btn-ivs" name="btn-ivs" value="Calculate IVs" />
 		        </div>
 		        <div id="">
-		            <h2>Individual Values</h2>
-		            <table>
-		                <thead>
-		                    <tr>
-		                        <th>Stat</th>
-		                        <th>IV</th>
-		                    </tr>
-		                </thead>
+		            <h3>Individual Values</h3>
+		            <table class="stats">
+					    <thead>
+						    <tr>
+								<th>HP</th>
+							    <th>Atk</th>
+							    <th>Def</th>
+							    <th>SpA</th>
+							    <th>SpD</th>
+							    <th>Spe</th>
+						    </tr>
+					    </thead>
 		                <tbody>
-		                    <tr class="hp">
-		                        <th>HP</th>
+							<tr>
 		                        <td><input type="text" id="med0-0" value="" pattern="[0-9]*" /></td>
-		                    </tr>
-		                    <tr class="atk">
-		                        <th>Atk</th>
 		                        <td><input type="text" id="med1-0" value="" pattern="[0-9]*"  /></td>
-		                    </tr>
-		                    <tr class="def">
-		                        <th>Def</th>
 		                        <td><input type="text" id="med2-0" value="" pattern="[0-9]*"  /></td>
-		                    </tr>
-		                    <tr class="spa">
-		                        <th>SpA</th>
 		                        <td><input type="text" id="med3-0" value="" pattern="[0-9]*"  /></td>
-		                    </tr>
-		                    <tr class="spd">
-		                        <th>SpD</th>
 		                        <td><input type="text" id="med4-0" value="" pattern="[0-9]*"  /></td>
-		                    </tr>
-		                    <tr class="spe">
-		                        <th>Spe</th>
 		                        <td><input type="text" id="med5-0" value="" pattern="[0-9]*"  /></td>
 		                    </tr>
 		                </tbody>
 		            </table>				
 		        </div>
-		    </div>
-        
-            <script type="text/javascript">
-                function iv_onload() {
-                    initO();
-                }
-                
-                function display_nature() {}
-                function display_effectiveness() {}
-                function display_eps() {}
-
-                iv_onload();
-            </script>
+		    </div>        
             <div id="hiddenButNecessary" class="hide">
                 <div id="types"></div>
                 <div id="eggs"></div>
@@ -273,7 +244,21 @@
                         <td id="spr5-0" class="right"></td></tr>
                 </table>
                 <input type="radio" class="radio tooltip" name="act" id="act-0" value="0" checked="checked" title="" alt="">
+				<input type="text" id="number-0" value="" pattern="[0-9]*" maxlength="4" readonly="readonly"  />
             </div>
+			
+            <script type="text/javascript">
+                function iv_onload() {
+                    initO();
+                }
+                
+                function display_nature() {}
+                function display_effectiveness() {}
+                function display_eps() {}
+				function display_char(){}			
+
+                iv_onload();
+            </script>
         </form>
 	</body>
 </html>

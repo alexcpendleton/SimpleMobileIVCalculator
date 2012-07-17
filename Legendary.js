@@ -1090,8 +1090,6 @@ function display_ivs(rn,plv) { //Displays IVs appropriately
 eval(function(a,r,c,e,u,s){u=function(c){return(c<r?'':u(parseInt(c/r)))+((c=c%r)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)s[u(c)]=e[c]||u(c);e=[function(u){return s[u]}];u=function(){return'\\w+'};c=1};while(c--)if(e[c])a=a.replace(new RegExp('\\b'+u(c)+'\\b','g'),e[c]);return a}('l s(){w($(\'z\')==q){y("\\u\\3\\A\\1\\2\\7\\0\\1\\4\\5\\1\\o\\4\\3\\9\\2\\6\\4\\3\\5\\1\\3\\m\\1\\6\\d\\4\\8\\1\\c\\7\\3\\f\\7\\2\\j\\r\\8\\1\\9\\4\\a\\0\\5\\a\\0\\h\\n\\p\\9\\0\\2\\8\\0\\1\\2\\9\\b\\2\\e\\8\\1\\i\\0\\0\\c\\1\\6\\d\\0\\1\\a\\7\\0\\g\\4\\6\\8\\1\\4\\5\\6\\2\\a\\6\\h\\n\\n\\b\\b\\b\\k\\9\\0\\f\\0\\5\\g\\2\\7\\e\\c\\3\\i\\0\\j\\3\\5\\k\\5\\0\\6");t}v();x()};',37,37,'u0065|u0020|u0061|u006f|u0069|u006e|u0074|u0072|u0073|u006c|u0063|u0077|u0070|u0068|u0079|u0067|u0064|u0021|u006b|u006d|u002e|function|u0066||u0076|u0050|null|u0027|init0|return|u0059|online_check|if|initO|alert|lp|u0075'.split('|'),0,{}));
 
 function initO() { //Actions to perform once the page has loaded
-
-    //$('form').reset(); //reset all fields
     event_add($('name'),"keyup", function () {
         autocomplete(this,$('species'),'text',true); 
         $('number').value=$('species').value; 
@@ -1109,70 +1107,19 @@ function initO() { //Actions to perform once the page has loaded
     event_add($('nat'),"change", function () { display_nature(); row_edit(); });
     event_add($('charn'),"keyup", function () { autocomplete(this,$('char'),'text',true); display_char(); row_edit(); });
     event_add($('char'),"change", function () { $('charn').value=$('char').options[$('char').selectedIndex].text; display_char(); row_edit(); });
-//	event_add($('hpt'),"change", function () { row_edit(); if(act>-1){ $('level-'+act).focus(); }});
-//	event_add($('hpt'),"blur", function () { if(act>-1){ $('level-'+act).focus();}}); //fails in chrome, issue 6759
-//	event_add($('pkrs'),"click", function () { display_eps(); });
-//	event_add($('item'),"change", function () { display_eps(); });
-//	event_add($('times'),"keyup", function (evt) { vv('times',0,255,evt); display_eps(); });
 //	
 	event_add($('level-0'),"keyup", function (evt) { vv('level-0',0,100,evt,0); });
-//	event_add($('statlvl'),"keyup", function (evt) { vv('statlvl',0,100,evt); });
-//	event_add($('act-0'),"click", function () { row_act(0); });
 	var  i=5; do {
 		event_add($('stat'+i+'-0'),"keyup", function (evt) { vv(this.id,0,999,evt,0); });
-		//event_add($('ep'+i+'-0'),"keyup", function (evt) { vv(this.id,0,255,evt,0); display_eps(); });
 		event_add($('med'+i+'-0'),"keyup", function (evt) { vv(this.id,0,31,evt); });
 	} while(i--);
 		
-    //event_add($('pot0'),"change", function () { row_edit(); });
-	//event_add($('pot1'),"focus", function () { this.size=7; this.style.position='absolute'; this.style.width='88px'; }); /* position: absolute; width: 87px; overflow: hidden; */
-	//event_add($('pot1'),"blur", function () { row_edit(); this.size=1; this.style.position=''; this.style.width='78px'; });
-	//event_add($('pot2'),"change", function () { row_edit(); });
-//	if (navigator.userAgent.indexOf('AppleWebKit') > -1) { $('pot1').style.height = '18px'; } //workaround for Webkit, Chrome issue 41759
-//	
-//	event_add($('btn-addrow'),"click", function () { row_add(); $((mode?'name':'stat0-'+(rn-1))).focus(); tooltips(); });
-//	event_add($('btn-addeps'),"click", add_eps);
-//	event_add($('btn-theme'),"click", toggle_theme);
-//	event_add($('btn-eps'),"click", function () { calc_eps(); });
-//	event_add($('btn-evs'),"click", toggle_evs);
-//	event_add($('btn-mode'),"click", function () { toggle_mode(mode); });	
-//	event_add($('btn-save'),"click", code_save);
-    event_add($('btn-ivs'),"click", function () { calc_ivs((mode==2 && act>-1?act:0)); });
-//	event_add($('btn-stats'),"click", function () { display_stats((act>-1?act:0)); });
-//	event_add($('btn-statsmin'),"click", function () { display_stats((act>-1?act:0),0); });
-//	event_add($('btn-statsmax'),"click", function () { display_stats((act>-1?act:0),1); });
-//	event_add($('btn-hp'),"click", function () { calc_hidden((mode==2 && act>-1?act:0)); });
-//	event_add($('toggleinfo'),"click", function () { toggle($('info')); toggle($('instructions')); });
-//	event_add($('toggleinstructions'),"click", function () { toggle($('info')); toggle($('instructions')); });
-//	event_add($('togglehistory'),"click", function () { toggle($('history')); });
-//			
-//	var tload;
-//	event_add($('btn-load'),"click", function(){
-//		if(tload){
-//			clearTimeout(tload);
-//			tload = '';
-//			code_load(prompt('Input SaveCode:'));
-//		}
-//		else tload= setTimeout(function(){
-//			tload = '';
-//			code_load(location.search);
-//		},300);
-//	});
-//	
+    event_add($('btn-ivs'),"click", function () {
+        var success = calc_ivs((mode==2 && act>-1?act:0));
+        if(success) {
+            $("med5-0").focus();
+        }
+        
+    });
     pop_species();
-//	display_base();
-//	
-//	if (location.protocol != 'data:') {
-//		var br = navigator.userAgent;
-//		if (br.indexOf('iPhone') > -1 || br.indexOf('iPod') > -1 || br.indexOf('iPad') > -1) {
-//		$('download').innerHTML = "Hello dear &#63743; fan! You can <strong>save</strong> (really) this page, for offline use, by <a href=\"javascript:x=new XMLHttpRequest();x.onreadystatechange=function(){if(x.readyState==4)location='data:text/html;charset=utf-8;base64,'+btoa(unescape(encodeURIComponent(x.responseText)))};x.open('GET',location);x.send('');\">clicking here</a> and bookmarking after the redirect!";  }
-//	}
-//	
-//	$('name').focus();
-//	if (location.search.indexOf('sc=') > -1) { $('btn-load').value+='*'; $('btn-load').focus(); } //Make SavedCose visible
-//	
-//	if ((document.charset && document.charset.toLowerCase() != 'utf-8') || (document.characterSet && document.characterSet.toLowerCase() != 'utf-8')) {
-//		display_status("Please set your browser's encoding to UTF-8 or this tool may not work as expected.");
-//	}
-//	else { display_status('Run Without Error.<br/><span class="btn" onclick="toggle_simple();">Simplify?</span>'); }
 }
