@@ -20,3 +20,4 @@ h3 { font-size:0.9em; }
 #status { margin:4px; font-size:0.9em;}
 
 #toggleinfo { cursor:pointer; }
+.notes  textarea{ width:100%; height:4em;}
